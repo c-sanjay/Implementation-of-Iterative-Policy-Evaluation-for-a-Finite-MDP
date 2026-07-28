@@ -149,9 +149,9 @@ Iterative policy evaluation was implemented successfully using the Gymnasium Fro
 
 ## Inference
 
-
-The iterative policy evaluation algorithm successfully estimated the state-value function for the given random policy. The value function converged in 54 iterations, with higher values observed near the goal state and zero values for hole and terminal states, indicating that states closer to the goal have a higher expected return under the given policy.
-
+The resulting state value function for the random policy converged after 54 iterations of the iterative policy evaluation algorithm․ 
+The states closer to the goal state had higher value․ The hole and terminal states never had a value other than zero‚ during the evaluation process․ 
+This means that states that are closer to the goal will have a higher expected return under this policy․
 
 
 
