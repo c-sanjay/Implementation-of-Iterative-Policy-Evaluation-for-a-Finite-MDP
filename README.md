@@ -1,4 +1,4 @@
-<img width="1790" height="760" alt="image" src="https://github.com/user-attachments/assets/aa4a3aa7-a724-4c47-ac48-2e943f3b0e8b" /># Implementation-of-Iterative-Policy-Evaluation-for-a-Finite-MDP
+# Implementation-of-Iterative-Policy-Evaluation-for-a-Finite-MDP
 ## Aim
 
 To implement iterative policy evaluation using Gymnasium and estimate the state-value function $V^\pi(s)$ for a fixed random policy.
