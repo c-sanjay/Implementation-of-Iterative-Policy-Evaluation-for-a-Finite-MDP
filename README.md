@@ -1,4 +1,4 @@
-# Implementation-of-Iterative-Policy-Evaluation-for-a-Finite-MDP
+<img width="1790" height="760" alt="image" src="https://github.com/user-attachments/assets/aa4a3aa7-a724-4c47-ac48-2e943f3b0e8b" /># Implementation-of-Iterative-Policy-Evaluation-for-a-Finite-MDP
 ## Aim
 
 To implement iterative policy evaluation using Gymnasium and estimate the state-value function $V^\pi(s)$ for a fixed random policy.
@@ -100,33 +100,45 @@ Where:
 
 ```python
 
-
 # -------------------------------------------------
 # Policy Evaluation Function
 # -------------------------------------------------
+def policy_evaluation(env, policy, gamma=0.99, theta=1e-8):
+    
+    V = np.zeros(env.observation_space.n)
+    iteration = 0
 
+    while True:
+        delta = 0
+        new_V = np.copy(V)
 
-# -------------------------------------------------
-# Display Output
-# -------------------------------------------------
+        for s in range(env.observation_space.n):
+            v = 0
 
-# Change the parameters and observe the results
+            for a, action_prob in enumerate(policy[s]):
 
+                for prob, next_state, reward, terminated in env.P[s][a]:
+                    v += action_prob * prob * (
+                        reward + gamma * V[next_state] * (not terminated)
+                    )
+
+            new_V[s] = v
+            delta = max(delta, abs(V[s] - new_V[s]))
+
+        V = new_V
+        iteration += 1
+        if delta < theta:
+            break
+
+    return V, iteration
 ```
 
----
+
 
 ## Output
 
-```text
+<img width="489" height="288" alt="image" src="https://github.com/user-attachments/assets/a5c856cf-21b5-40c0-ae89-b9417d11fbb5" />
 
-Number of Iterations: 
-
-State-Value Function as 4x4 Grid:
-
-
-
-```
 ---
 
 ## Result
